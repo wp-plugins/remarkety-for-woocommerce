@@ -17,28 +17,15 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-
-Send intelligent emails based on customer purchase history. Recover abandoned carts, send targeted newsletters, order follow ups and more.
-
-
-
 == Description ==
 
-
-
-Remarkety is Email Marketing for WooCommerce 
+Remarkety is the ultimate Email Marketing for WooCommerce. With Remarkety you can send intelligent emails based on customer purchase history. Recover abandoned carts, send targeted newsletters, recommend products and more.
 
 
 
 = Increase Customer Lifetime Value & Retention = 
 
 Engages customers by sending personalized emails with product recommendations, coupons and more 
-
-
-
-= Track Customer Behavior = 
-
-Analyze your customer behavior and purchases to send personalized emails more likely to lead to a sale 
 
 
 
@@ -63,6 +50,11 @@ Automatically email customers with images, links and the prices of products in t
 = Win Back Inactive Customers = 
 
 Deliver emails that urge old customers to visit your website and purchase
+
+= Track Customer Behavior =
+
+Analyze your customer behavior and purchases to send personalized emails more likely to lead to a sale
+
 
 
 = Nurture Leads = 
@@ -110,7 +102,7 @@ Pricing plans are designed for every size business. Plus, Remarkety is trusted b
 
 Remarkety is an email marketing platform created especially for eCommerce. Remarkety helps you grow sales by sending personalized and targeted emails based on customer behavior and purchase history. You can now send advanced and highly-targeted emails that leverage similar email technology used by Amazon and eBay.
 
-Get started for FREE with a 30-day unlimited free trial. When you connect your store to Remarkety, our marketing engine immediately goes to work, analyzing your customers, their shopping behavior and purchase history. In minutes, we will recommend email campaigns designed to grow sales and engage your customers.
+Get started for FREE with a 30-day unlimited free trial. When you connect your WooCommerce store to Remarkety, our marketing engine immediately goes to work, analyzing your customers, their shopping behavior and purchase history. In minutes, we will recommend email campaigns designed to grow sales and engage your customers.
 
 Sign up and connect your store in under two minutes, you’ll be creating your first email campaign. Want a demo? We have a great team ready to help. Simply email us or drop us a line at 1-800-570-7564.
 
@@ -174,6 +166,13 @@ Remarkety carefully monitors the amount of emails that your customers receive fr
 
 == Screenshots ==
 
+1. Abandoned cart email example.
+2. Personal email example.
+3. Remarkety dashboard.
+4. Easy customer segmentation.
+5. Email campaign recommendation.
+6. Marketing reports.
+7. Track results
 
 
 == Changelog ==
