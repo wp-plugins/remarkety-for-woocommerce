@@ -2,8 +2,6 @@
 
 Contributors: remarkety
 
-Donate link: http://example.com/
-
 Tags: comments, spam
 
 Requires at least: 3.0.1
@@ -21,7 +19,7 @@ Send intelligent emails based on customer purchase history. Recover abandoned ca
 
 == Description ==
 
-Remarkety is the ultimate Email Marketing for WooCommerce.
+Remarkety is the ultimate Email Marketing automation tool for WooCommerce.
 
 
 

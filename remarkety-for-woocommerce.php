@@ -3,10 +3,10 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Plugin Name: Remarkety WooCommerce API
+ * Plugin Name: Remarkety - Email Marketing for WooCommerce
  * Plugin URI: http://www.remarkety.com
  * Description: A Woocommerce connector for Remarkety services
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Remarkety
  * Author URI: http://www.remarkety.com
  * License: GPL2
