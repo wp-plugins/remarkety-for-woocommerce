@@ -28,15 +28,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
  
-if (! class_exists('remakrety_for_woocommerce')) :
+if (! class_exists('remarkety_for_woocommerce')) :
 	
 	/**
 	* Main Remarkety for WooCommerce API Class
 	*
-	* @class remakrety_for_woocommerce
+	* @class remarkety_for_woocommerce
 	* @version	1.0.6
 	*/
-	class remakrety_for_woocommerce {
+	class remarkety_for_woocommerce {
 		
 		const OPTION_API_KEY = 'remarkety_api_key';
 		const OPTION_DEBUG_MODE = 'remarkety_api_debug';
@@ -53,14 +53,14 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			add_action('woocommerce_cart_updated', array($this, 'wc_cart_update_event'));
 			add_action('woocommerce_cart_emptied', array($this, 'wc_cart_empty_event'));
 			add_filter('xmlrpc_methods', array($this, 'xml_add_methods'));
-			remakrety_for_woocommerce::$debug_mode = (get_option(self::OPTION_DEBUG_MODE) == 'on');
-			remakrety_for_woocommerce::$logPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . self::LOG_NAME;
-			set_error_handler(array("remakrety_for_woocommerce","remarketyErrorHandler"));
-			if (remakrety_for_woocommerce::$debug_mode == 1){
+			remarkety_for_woocommerce::$debug_mode = (get_option(self::OPTION_DEBUG_MODE) == 'on');
+			remarkety_for_woocommerce::$logPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . self::LOG_NAME;
+			set_error_handler(array("remarkety_for_woocommerce","remarketyErrorHandler"));
+			if (remarkety_for_woocommerce::$debug_mode == 1){
 				error_reporting(E_ALL | E_STRICT);
 				ini_set("display_errors", 1);
 			}
-			remakrety_for_woocommerce::$debugData = null;
+			remarkety_for_woocommerce::$debugData = null;
 		}
 	
 		function xml_add_methods($methods) {
@@ -111,7 +111,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		}
 		
 		public function admin_init() {
-			register_setting('remakrety_for_woocommerce', self::OPTION_DEBUG_MODE, array($this, 'debug_mode_changed'));
+			register_setting('remarkety_for_woocommerce', self::OPTION_DEBUG_MODE, array($this, 'debug_mode_changed'));
 			add_settings_section('remarkety_main', '', array($this, 'settings_section'), __FILE__);
 			add_settings_field(self::OPTION_DEBUG_MODE, 'Enable debug mode', array($this, 'setting_debug_mode'), __FILE__, 'remarkety_main');
 		}
@@ -123,7 +123,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		}
 		
 		public function add_menu() {
-			add_options_page('Remarkety WC API Settings', 'Remarkety WC API', 'manage_options', 'remakrety_for_woocommerce', array($this, 'plugin_settings_page'));
+			add_options_page('Remarkety WC API Settings', 'Remarkety WC API', 'manage_options', 'remarkety_for_woocommerce', array($this, 'plugin_settings_page'));
 		}
 		
 		public function plugin_settings_page() {
@@ -133,7 +133,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 				
 			echo '<div class="wrap">';
 			echo '<form method="post" action="options.php">';
-			settings_fields('remakrety_for_woocommerce');
+			settings_fields('remarkety_for_woocommerce');
 			do_settings_sections(__FILE__);
 			@submit_button();
 			echo '</form>';
@@ -154,37 +154,37 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			$this->debug_mode = true;
 				
 			if ($input == 'on') {
-				remakrety_for_woocommerce::log('Debug mode turned on');
+				remarkety_for_woocommerce::log('Debug mode turned on');
 			} else {
-				remakrety_for_woocommerce::log('Debug mode turned off');
+				remarkety_for_woocommerce::log('Debug mode turned off');
 			}
 				
 			return $input;
 		}
 		
 		public function wc_cart_empty_event() {
-			remakrety_for_woocommerce::log("Start wc_cart_empty_event()");
+			remarkety_for_woocommerce::log("Start wc_cart_empty_event()");
 			global $wpdb;
 			if (!is_user_logged_in()) return;
 			$user_id = get_current_user_id();
 			$q = "DELETE FROM {$wpdb->prefix}remarkety_carts WHERE user_id = %d";
 			$wpdb->query($wpdb->prepare($q, $user_id));
-			remakrety_for_woocommerce::log("wc_cart_empty_event executed query : ".$q);
+			remarkety_for_woocommerce::log("wc_cart_empty_event executed query : ".$q);
 		}
 		
 		public function wc_cart_update_event() {
-			remakrety_for_woocommerce::log("Start wc_cart_update_event()");
+			remarkety_for_woocommerce::log("Start wc_cart_update_event()");
 			global $wpdb;
 
 			if (!is_user_logged_in()){
-				remakrety_for_woocommerce::log("wc_cart_update_event() User is not login.");
+				remarkety_for_woocommerce::log("wc_cart_update_event() User is not login.");
 				return;
 			} 
 			$session_cart = null;
 			if(isset(WC()->session) && isset(WC()->session->cart)){
 				$session_cart = WC()->session->cart;
 			}else{
-				remakrety_for_woocommerce::log("wc_cart_update_event() No cart in session.");
+				remarkety_for_woocommerce::log("wc_cart_update_event() No cart in session.");
 				return;
 			}
 			
@@ -224,16 +224,16 @@ if (! class_exists('remakrety_for_woocommerce')) :
 					
 				}
 				
-				remakrety_for_woocommerce::log("wc_cart_update_event executed query : ".$q);
+				remarkety_for_woocommerce::log("wc_cart_update_event executed query : ".$q);
 			} catch (Exception $e) {
-				remakrety_for_woocommerce::log($e);
+				remarkety_for_woocommerce::log($e);
 			}		
-			remakrety_for_woocommerce::log("End wc_cart_update_event");
+			remarkety_for_woocommerce::log("End wc_cart_update_event");
 		}
 				
 		public function api_method_get_store_settings($args) {
-			remakrety_for_woocommerce::log("Start api_method_get_store_settings()");
-			remakrety_for_woocommerce::log($args);
+			remarkety_for_woocommerce::log("Start api_method_get_store_settings()");
+			remarkety_for_woocommerce::log($args);
 			if (count($args) < 1) return self::status_params_error();
 			if (!$this->auth($args)) return self::status_auth_error();
 				
@@ -260,15 +260,15 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			global $wp_version;
 			$res['settings']['wp_version'] = $wp_version;
 			
-			remakrety_for_woocommerce::log("End api_method_get_store_settings()");
+			remarkety_for_woocommerce::log("End api_method_get_store_settings()");
 			return $res;
 		}
 		
 		public function api_method_get_shoppers($args) {
 			global $wpdb;
 			$ids = array();
-			remakrety_for_woocommerce::log('Start api_method_get_shoppers');
-			remakrety_for_woocommerce::log($args);
+			remarkety_for_woocommerce::log('Start api_method_get_shoppers');
+			remarkety_for_woocommerce::log($args);
 			
 			if (count($args) < 1) return self::status_params_error();
 			if (!$this->auth($args)) return self::status_auth_error();
@@ -304,7 +304,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		
 			if ($results) {
 				foreach ($results as $result){ 
-					remakrety_for_woocommerce::log('Result ID = '.$result->ID);
+					remarkety_for_woocommerce::log('Result ID = '.$result->ID);
 					$ids[] = $result->ID;
 				}
 			
@@ -319,7 +319,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			
 				$query = new WP_User_Query($q);
 				
-				remakrety_for_woocommerce::log('Query = '.print_r($query,true));
+				remarkety_for_woocommerce::log('Query = '.print_r($query,true));
 			
 				/* @var $user WP_User */
 				if (!empty($query->results)) {
@@ -333,7 +333,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		}
 		
 		public function api_method_get_shoppers_count($args) {
-			remakrety_for_woocommerce::log('Start api_method_get_shoppers_count');
+			remarkety_for_woocommerce::log('Start api_method_get_shoppers_count');
 			if (count($args) < 1) return self::status_params_error();
 			if (!$this->auth($args)) return self::status_auth_error();
 			
@@ -345,14 +345,14 @@ if (! class_exists('remakrety_for_woocommerce')) :
 				
 			$query = new WP_User_Query($q);
 			$res = array('count' => count($query));
-			remakrety_for_woocommerce::log('End api_method_get_shoppers_count');
+			remarkety_for_woocommerce::log('End api_method_get_shoppers_count');
 			return $res;
 		}
 		
 		public function api_method_get_products($args) {
 			global $wpdb;
-			remakrety_for_woocommerce::log('Start api_method_get_products');
-			remakrety_for_woocommerce::log($args);
+			remarkety_for_woocommerce::log('Start api_method_get_products');
+			remarkety_for_woocommerce::log($args);
 			if (count($args) < 1) return self::status_params_error();
 			if (!$this->auth($args)) return self::status_auth_error();
 			
@@ -393,7 +393,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			";
 
 
-//			remakrety_for_woocommerce::log($q);
+//			remarkety_for_woocommerce::log($q);
 			
 			$res = array('products' => array());
 			$results = $wpdb->get_results($q);
@@ -404,7 +404,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 				}
 			}
 			$this->addDebugIfNeeded($res);
-			remakrety_for_woocommerce::log('End api_method_get_products');
+			remarkety_for_woocommerce::log('End api_method_get_products');
 			return $res;
 		}
 		
@@ -419,8 +419,8 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		}
 		
 		public function api_method_create_coupon($args) {
-			remakrety_for_woocommerce::log('Start api_method_create_coupon');
-			remakrety_for_woocommerce::log($args);
+			remarkety_for_woocommerce::log('Start api_method_create_coupon');
+			remarkety_for_woocommerce::log($args);
 			
 			if (count($args) < 12) return self::status_auth_error();
 			if (!$this->auth($args)) return self::status_params_error();
@@ -485,21 +485,21 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			update_post_meta($new_coupon_id, 'free_shipping', $free_shipping);
 			update_post_meta($new_coupon_id, 'minimum_amount', $minimum_spent);
 			
-			remakrety_for_woocommerce::log('End api_method_create_coupon');
+			remarkety_for_woocommerce::log('End api_method_create_coupon');
 			
 			return self::status_success();
 		}
 		
 		public function api_method_get_orders($args) {
-			remakrety_for_woocommerce::log('Start api_method_get_orders');
-			remakrety_for_woocommerce::log($args);
+			remarkety_for_woocommerce::log('Start api_method_get_orders');
+			remarkety_for_woocommerce::log($args);
 			if (count($args) < 1) return self::status_params_error();
 			if (!$this->auth($args)) return self::status_auth_error();
 		
 			$datetime = new DateTime( $args[1], new DateTimeZone( 'UTC' ) );
 			$updated_at_min = $datetime->format( 'Y-m-d H:i:s' );
 			
-			remakrety_for_woocommerce::log('updated_at_min arg[1] = '.$updated_at_min);
+			remarkety_for_woocommerce::log('updated_at_min arg[1] = '.$updated_at_min);
 			$q = array(
 					'post_type' => 'shop_order',
 					'post_status' => array_keys( wc_get_order_statuses() ),
@@ -511,19 +511,19 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		
 			$query = new WP_Query($q);
 			
-			remakrety_for_woocommerce::log('Query = '.print_r($query,true));
+			remarkety_for_woocommerce::log('Query = '.print_r($query,true));
 		
 			$res = array('orders' => array());
 			if ($query->have_posts()) {
 				while ($query->have_posts()) {
 					$query->the_post();
 					$order_id = $query->post->ID;
-					remakrety_for_woocommerce::log('Order ID: '.$order_id);
+					remarkety_for_woocommerce::log('Order ID: '.$order_id);
 					$res['orders'][] = $this->get_order($order_id); //new WC_Order($query->post->ID);
 				}
 			}
 			$this->addDebugIfNeeded($res);
-			remakrety_for_woocommerce::log('End api_method_get_orders');
+			remarkety_for_woocommerce::log('End api_method_get_orders');
 			return $res;
 		}
 		
@@ -578,8 +578,8 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		
 		public function api_method_get_carts($args) {
 			global $wpdb;
-			remakrety_for_woocommerce::log('Start api_method_get_carts');
-			remakrety_for_woocommerce::log($args);
+			remarkety_for_woocommerce::log('Start api_method_get_carts');
+			remarkety_for_woocommerce::log($args);
 			
 			if (count($args) < 1) return self::status_params_error();
 			if (!$this->auth($args)) return self::status_auth_error();
@@ -597,7 +597,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			}
 			
 			$q = "SELECT * FROM {$wpdb->prefix}remarkety_carts WHERE true {$updated_min} {$updated_max} ORDER BY updated_on {$limit}";
-			remakrety_for_woocommerce::log($q);
+			remarkety_for_woocommerce::log($q);
 			
 			$results = $wpdb->get_results($q);
 			
@@ -609,11 +609,11 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			$res = array('carts' => array());
 			
 			if ($results) {
-				remakrety_for_woocommerce::log('Carts count:'.count($results));
+				remarkety_for_woocommerce::log('Carts count:'.count($results));
 				foreach ($results as $result) {
-//					remakrety_for_woocommerce::log($result);
-//					remakrety_for_woocommerce::log($result->cart_data);
-//					remakrety_for_woocommerce::log(unserialize($result->cart_data));
+//					remarkety_for_woocommerce::log($result);
+//					remarkety_for_woocommerce::log($result->cart_data);
+//					remarkety_for_woocommerce::log(unserialize($result->cart_data));
 					
 					$res['carts'][] = array(
 							'created_on'			=> $result->created_on,
@@ -628,21 +628,21 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			}
 
 			$this->addDebugIfNeeded($res);
-			remakrety_for_woocommerce::log('End api_method_get_carts');
+			remarkety_for_woocommerce::log('End api_method_get_carts');
 			return $res;
 		}
 		
 		private function get_order($id) {
-			remakrety_for_woocommerce::log('Start get_order');
-			remakrety_for_woocommerce::log('Order: '.$id);
+			remarkety_for_woocommerce::log('Start get_order');
+			remarkety_for_woocommerce::log('Order: '.$id);
 			
 			$order = new WC_Order($id);
 			$order_post = get_post($id);
 			$currency = ($order->get_order_currency() == '') ? get_option('woocommerce_currency') : $order->get_order_currency();
 			
-			remakrety_for_woocommerce::log('Currency = '.$currency);
+			remarkety_for_woocommerce::log('Currency = '.$currency);
 			
-			remakrety_for_woocommerce::log($order);
+			remarkety_for_woocommerce::log($order);
 
 			$order_data = array(
 					'id'                        => $order->id,
@@ -696,12 +696,12 @@ if (! class_exists('remakrety_for_woocommerce')) :
 					'shopper_block'				=> $this->user_data_array_by_user_id($order->customer_user),
 			);
 			
-			remakrety_for_woocommerce::log('Order data = '.print_r($order_data,true));
+			remarkety_for_woocommerce::log('Order data = '.print_r($order_data,true));
 		
 			// add line items
 			foreach( $order->get_items() as $item_id => $item ) {
 				$product = $order->get_product_from_item($item);
-				remakrety_for_woocommerce::log('Product = '.print_r($product,true));
+				remarkety_for_woocommerce::log('Product = '.print_r($product,true));
 
 				if(empty($product)){
 					continue;
@@ -734,7 +734,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 						'amount' => $coupon_item['discount_amount'],
 				);
 			}
-			remakrety_for_woocommerce::log('End get_order');
+			remarkety_for_woocommerce::log('End get_order');
 			return $order_data;
 		}
 		
@@ -745,7 +745,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		}
 		
 		private function user_data_array(WP_User $user) {
-			remakrety_for_woocommerce::log('Start user_data_array');
+			remarkety_for_woocommerce::log('Start user_data_array');
 			if ($user->ID == 0) return array();	// unregistered user
 			
 			$fields = array(
@@ -767,7 +767,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			$res = array();
 			foreach ($fields as $fld) $res[$fld] = $user->get($fld);
 			$res['is_guest'] = false;
-			remakrety_for_woocommerce::log($res);
+			remarkety_for_woocommerce::log($res);
 			return $res;
 		}
 		
@@ -847,8 +847,8 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		}
 		
 		public function api_method_debug($args){
-			remakrety_for_woocommerce::log('Start api_method_debug');
-			remakrety_for_woocommerce::log($args);
+			remarkety_for_woocommerce::log('Start api_method_debug');
+			remarkety_for_woocommerce::log($args);
 			$isDebug = $args[1] == true ? 'on' : 'off';
 			update_option(self::OPTION_DEBUG_MODE, $isDebug);
 			$debug_level = $args[2];
@@ -859,7 +859,7 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			if($debug_level == 1){
 				
 			}else if($debug_level == 2){
-				$log = file_get_contents(remakrety_for_woocommerce::$logPath);
+				$log = file_get_contents(remarkety_for_woocommerce::$logPath);
 				$res['debug']['file'] = $log;
 			}
 			
@@ -871,27 +871,27 @@ if (! class_exists('remakrety_for_woocommerce')) :
 		}
 
 		public static function log($msg) {
-			if (remakrety_for_woocommerce::$debug_mode != 1) return;
+			if (remarkety_for_woocommerce::$debug_mode != 1) return;
 			if (is_array($msg)) $msg = "(array dump) " . print_r($msg, true);
 			if (is_object($msg)) $msg = "(object dump) " . print_r($msg, true);
 			$msg = date('Y-m-d H:i:s')." : {$msg}".PHP_EOL;
-			file_put_contents(remakrety_for_woocommerce::$logPath, $msg, FILE_APPEND);
-			if (remakrety_for_woocommerce::$debug_mode == 1){
-				remakrety_for_woocommerce::$debugData .= $msg;
+			file_put_contents(remarkety_for_woocommerce::$logPath, $msg, FILE_APPEND);
+			if (remarkety_for_woocommerce::$debug_mode == 1){
+				remarkety_for_woocommerce::$debugData .= $msg;
 			}
 		}
 		
 		private function addDebugIfNeeded(&$result){
-			remakrety_for_woocommerce::log('Start addDebugIfNeeded');
-			if (remakrety_for_woocommerce::$debug_mode == 1 && remakrety_for_woocommerce::$debugData != null){
+			remarkety_for_woocommerce::log('Start addDebugIfNeeded');
+			if (remarkety_for_woocommerce::$debug_mode == 1 && remarkety_for_woocommerce::$debugData != null){
 				global $wp_version;
 				$woo_version = get_option('woocommerce_version');
-				$result['debug'] = remakrety_for_woocommerce::$debugData.PHP_EOL.'wp_version='.$wp_version.' wc_version='.$woo_version.PHP_EOL;
+				$result['debug'] = remarkety_for_woocommerce::$debugData.PHP_EOL.'wp_version='.$wp_version.' wc_version='.$woo_version.PHP_EOL;
 			}
 		}
 		
 		private function clearLog(){
-			file_put_contents(remakrety_for_woocommerce::$logPath, '');
+			file_put_contents(remarkety_for_woocommerce::$logPath, '');
 		}
 		
 		static public function remarketyErrorHandler($errno, $errstr, $errfile, $errline){
@@ -925,8 +925,8 @@ if (! class_exists('remakrety_for_woocommerce')) :
 			        break;
 		    }
 		    $errStr = $errorType.": [".$errno."] ".$errstr. " Line ".$errline." in file ".$errfile;
-		    remakrety_for_woocommerce::$debugData .= $errStr;
-			remakrety_for_woocommerce::log($errStr);
+		    remarkety_for_woocommerce::$debugData .= $errStr;
+			remarkety_for_woocommerce::log($errStr);
 		    /* Don't execute PHP internal error handler */
 		    return true;
 		}
@@ -934,18 +934,18 @@ if (! class_exists('remakrety_for_woocommerce')) :
 	
 endif;
 
-if (class_exists('remakrety_for_woocommerce')) {
+if (class_exists('remarkety_for_woocommerce')) {
 	
-	register_activation_hook(__FILE__, array('remakrety_for_woocommerce', 'activate'));
-	register_uninstall_hook(__FILE__, array('remakrety_for_woocommerce', 'uninstall'));
+	register_activation_hook(__FILE__, array('remarkety_for_woocommerce', 'activate'));
+	register_uninstall_hook(__FILE__, array('remarkety_for_woocommerce', 'uninstall'));
 
-	$remakrety_for_woocommerce = new remakrety_for_woocommerce();
+	$remarkety_for_woocommerce = new remarkety_for_woocommerce();
 }
 
-if (isset($remakrety_for_woocommerce)) {
+if (isset($remarkety_for_woocommerce)) {
 
 	function plugin_settings_link($links) {
-		$settings_link = '<a href="options-general.php?page=remakrety_for_woocommerce">Settings</a>';
+		$settings_link = '<a href="options-general.php?page=remarkety_for_woocommerce">Settings</a>';
 		array_unshift($links, $settings_link);
 		return $links;
 	}

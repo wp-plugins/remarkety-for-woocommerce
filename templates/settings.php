@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     <div class="remarkety_logo"></div>
     <h1 class="">Remarkety for WooCommerce</h1>
     <h3>Your API Connection Code is:</h3>
-    <p><input type="text" size="40" readonly="readonly" value="<?php echo get_option(remarkety_wc_api::OPTION_API_KEY); ?>"></p>
+    <p><input type="text" size="40" readonly="readonly" value="<?php echo get_option(remarkety_for_woocommerce::OPTION_API_KEY); ?>"></p>
 	<h3>How to use the API Connection Code?</h3>
 	<p>This is a private generated token which allows the Remarkety service to securely connect to your WooCommerce store.
 		<br>You need to enter this code only once in order to setup your Remarkety account.
