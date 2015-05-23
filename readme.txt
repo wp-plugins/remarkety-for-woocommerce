@@ -104,14 +104,14 @@ Remarkety is an email marketing platform created especially for eCommerce. Remar
 
 Get started for FREE with a 30-day unlimited free trial. When you connect your WooCommerce store to Remarkety, our marketing engine immediately goes to work, analyzing your customers, their shopping behavior and purchase history. In minutes, we will recommend email campaigns designed to grow sales and engage your customers.
 
-Sign up and connect your store in under two minutes, you’ll be creating your first email campaign. Want a demo? We have a great team ready to help. Simply email us or drop us a line at 1-800-570-7564.
+[Sign up](https://app.remarkety.com) and connect your store in under two minutes, you’ll be creating your first email campaign. Want a demo? We have a great team ready to help. Simply email us or drop us a line at 1-800-570-7564.
 
 
 
 == Installation ==
 
 1. Install Remarkety either via the WordPress.org plugin directory, or by uploading the files to your server.
-2. After activating Remarkety, register for free at https://app.remarkety.com
+2. After activating Remarkety, [register](https://app.remarkety.com) for free at https://app.remarkety.com
 3. Copy/paste the security API key from your Remarkety plugin to your Remarkety new account and save it.
 4. That's it.  You're ready to go!
 
@@ -140,7 +140,7 @@ Once a week you will receive an email from us with a recommendation that was gen
 
  = What types of emails will you send to my customers? =
 
-We analyze your online store’s products, sales, and customers’ purchase history. Based on this analysis we recommend a variety of marketing activities, such as: cart abandonment recovery, wake up call to inactive customers, order follow-up emails, feedback request and more.
+We analyze your online store’s products, sales, and customers’ purchase history. Based on this analysis we recommend a variety of marketing activities, such as: Personal product recommendations, cart abandonment recovery, personal coupons, wake up call to inactive customers, order follow-up emails, feedback request and more.
 
 
  = Will my customers open these emails? = 
