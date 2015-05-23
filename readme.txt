@@ -1,8 +1,8 @@
-=== Plugin Name ===
+=== Remarkety - Email Marketing for WooCommerce ===
 
 Contributors: remarkety
 
-Tags: comments, spam
+Tags: WordPress.com, marketing, woocommerce, woocommerce emails, abandoned cart, email automation, ecommerce, emails, email marketing, campaigns, drip, email builder, email marketing, manage subscribers, newsletter, subscribers, subscription, targeted emails, 
 
 Requires at least: 3.0.1
 
@@ -110,7 +110,10 @@ Sign up and connect your store in under two minutes, you’ll be creating your f
 
 == Installation ==
 
-
+1. Install Remarkety either via the WordPress.org plugin directory, or by uploading the files to your server.
+2. After activating Remarkety, register for free at https://app.remarkety.com
+3. Copy/paste the security API key from your Remarkety plugin to your Remarkety new account and save it.
+4. That's it.  You're ready to go!
 
 
 == Frequently Asked Questions ==
@@ -164,7 +167,8 @@ Remarkety will not allow you to run a marketing activity if the email text does 
 
 Remarkety carefully monitors the amount of emails that your customers receive from you. So if a customer has received an email in the past number of days we will not send another email unless it is extremely “important”.
 
-== Screenshots
+== Screenshots ==
+
 1. Abandoned cart email example.
 2. Personal email example.
 3. Remarkety dashboard.
@@ -174,5 +178,13 @@ Remarkety carefully monitors the amount of emails that your customers receive fr
 7. Track results ==
 
 
-
 == Changelog ==
+
+= 1.0.6 =
+Release Date: May 22nd, 2015
+
+* Improved functionality - better reports and logging
+
+= 1.0.5 = 
+
+* Initial version
