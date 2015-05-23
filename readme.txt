@@ -17,9 +17,11 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
+Send intelligent emails based on customer purchase history. Recover abandoned carts, send targeted newsletters, order follow ups and more.
+
 == Description ==
 
-Remarkety is the ultimate Email Marketing for WooCommerce. With Remarkety you can send intelligent emails based on customer purchase history. Recover abandoned carts, send targeted newsletters, recommend products and more.
+Remarkety is the ultimate Email Marketing for WooCommerce.
 
 
 
@@ -164,15 +166,15 @@ Remarkety will not allow you to run a marketing activity if the email text does 
 
 Remarkety carefully monitors the amount of emails that your customers receive from you. So if a customer has received an email in the past number of days we will not send another email unless it is extremely “important”.
 
-== Screenshots ==
-
+== Screenshots
 1. Abandoned cart email example.
 2. Personal email example.
 3. Remarkety dashboard.
 4. Easy customer segmentation.
 5. Email campaign recommendation.
 6. Marketing reports.
-7. Track results
+7. Track results ==
+
 
 
 == Changelog ==
