@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
  
 if (! class_exists('remarkety_for_woocommerce')) :
-	
 	/**
 	* Main Remarkety for WooCommerce API Class
 	*
