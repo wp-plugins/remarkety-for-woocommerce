@@ -180,6 +180,11 @@ Remarkety carefully monitors the amount of emails that your customers receive fr
 
 == Changelog ==
 
+= 1.0.7 =
+Release Date: July 13th, 2015
+
+* Fix plugin settings link
+
 = 1.0.6 =
 Release Date: May 22nd, 2015
 

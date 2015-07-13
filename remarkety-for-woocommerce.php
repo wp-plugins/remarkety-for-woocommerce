@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Plugin Name: Remarkety - Email Marketing for WooCommerce
  * Plugin URI: http://www.remarkety.com
- * Description: A Woocommerce connector for Remarkety services
+ * Description: Email Marketing automation tool for WooCommerce.
  * Version: 1.0.6
  * Author: Remarkety
  * Author URI: http://www.remarkety.com
@@ -34,7 +34,7 @@ if (! class_exists('remarkety_for_woocommerce')) :
 	* Main Remarkety for WooCommerce API Class
 	*
 	* @class remarkety_for_woocommerce
-	* @version	1.0.6
+	* @version	1.0.7
 	*/
 	class remarkety_for_woocommerce {
 		
@@ -944,12 +944,12 @@ if (class_exists('remarkety_for_woocommerce')) {
 
 if (isset($remarkety_for_woocommerce)) {
 
-	function plugin_settings_link($links) {
+	function remarkety_plugin_settings_link($links) {
 		$settings_link = '<a href="options-general.php?page=remarkety_for_woocommerce">Settings</a>';
 		array_unshift($links, $settings_link);
 		return $links;
 	}
 
 	$plugin = plugin_basename(__FILE__);
-	add_filter("plugin_action_links_$plugin", 'plugin_settings_link');
+	add_filter("plugin_action_links_$plugin", 'remarkety_plugin_settings_link');
 }
