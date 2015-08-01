@@ -6,7 +6,7 @@ Tags: WordPress.com, marketing, woocommerce, woocommerce emails, abandoned cart,
 
 Requires at least: 3.0.1
 
-Tested up to: 4.2.2
+Tested up to: 4.2.3
 
 Stable tag: 4.3
 
@@ -179,6 +179,11 @@ Remarkety carefully monitors the amount of emails that your customers receive fr
 
 
 == Changelog ==
+
+= 1.0.8 =
+Release Date: August 1st, 2015
+
+* Support paging in orders synchronization
 
 = 1.0.7 =
 Release Date: July 13th, 2015

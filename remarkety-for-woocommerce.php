@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Plugin Name: Remarkety - Email Marketing for WooCommerce
  * Plugin URI: http://www.remarkety.com
  * Description: Email Marketing automation tool for WooCommerce.
- * Version: 1.0.7
+ * Version: 1.0.8
  * Author: Remarkety
  * Author URI: http://www.remarkety.com
  * License: GPL2
@@ -33,7 +33,7 @@ if (! class_exists('remarkety_for_woocommerce')) :
 	* Main Remarkety for WooCommerce API Class
 	*
 	* @class remarkety_for_woocommerce
-	* @version	1.0.7
+	* @version	1.0.8
 	*/
 	class remarkety_for_woocommerce {
 		
@@ -505,7 +505,11 @@ if (! class_exists('remarkety_for_woocommerce')) :
 					'date_query' => array(
 							'column' => 'post_modified_gmt',
 							'after'  => $updated_at_min
-					)
+					),
+                    'posts_per_page' => $args[3],
+                    'paged' => $args[4],
+                    'order' => 'ASC'
+
 			);
 		
 			$query = new WP_Query($q);
