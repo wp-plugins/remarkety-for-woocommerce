@@ -15,7 +15,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-Send intelligent emails based on customer purchase history. Recover abandoned carts, send targeted newsletters, order follow ups and more.
+Send intelligent emails based on customer purchase history. Recover abandoned carts, send targeted newsletters, order follow ups and more. Free 30-Day Trial!
 
 == Description ==
 
@@ -118,7 +118,7 @@ Get started for FREE with a 30-day unlimited free trial. When you connect your W
 
 == Frequently Asked Questions ==
 
- = How does Remarkety recommend my marketing activities? =
+ = How does Remarkety recommend email campaigns I should send to my customers? =
 
 We analyze your store’s data and purchase history to find opportunities, such as inactive customers, or customers who have spent more than a certain amount, etc.
 
@@ -167,6 +167,11 @@ Remarkety will not allow you to run a marketing activity if the email text does 
 
 Remarkety carefully monitors the amount of emails that your customers receive from you. So if a customer has received an email in the past number of days we will not send another email unless it is extremely “important”.
 
+
+ = How much does Remarkety cost?  = 
+
+Remarkety offers a free 30-day trial. After the trial, pricing is based on the size of your contact list. [See pricing here](http://www.remarkety.com/pricing). 
+
 == Screenshots ==
 
 1. Abandoned cart email example.
@@ -179,6 +184,25 @@ Remarkety carefully monitors the amount of emails that your customers receive fr
 
 
 == Changelog ==
+= 1.1.2 =
+Release date September 25th, 2015
+
+* Improve orders data sync
+
+= 1.1.1 =
+Release date September 18th, 2015
+
+* Fix log file path
+
+= 1.1.0 =
+Release date September 18th, 2015
+
+* Fix order items synchronization - V1.1.0
+
+= 1.0.9 =
+Release date August 24th, 2015
+
+* Add support in product tags, inventory and visibility for product recommendations in emails
 
 = 1.0.7 =
 Release Date: July 13th, 2015
